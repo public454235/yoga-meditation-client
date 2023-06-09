@@ -1,29 +1,26 @@
+import { useForm } from "react-hook-form";
 import { useContext } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
-    const {createUser}= useContext(AuthContext)
+    const { createUser } = useContext(AuthContext)
 
-    const handleSignUp = event => {
-        event.preventDefault()
-        const form = event.target;
-        const name = form.name.value;
-        const photo = form.photo.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password, name, photo)
-        createUser(email, password)
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const onSubmit = data => {
+        console.log(data)
+        createUser(data.email, data.password)
             .then(result => {
-                const user = result.user;
-                console.log('created user', user)
-            })
-            .catch(error => {
-                console.log(error)
+                const loggedUser = result.user;
+                console.log(loggedUser)
             })
 
-    }
+
+    };
+
+
     return (
         <div className='flex justify-center items-center min-h-screen'>
             <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
@@ -31,7 +28,7 @@ const SignUp = () => {
                     <h1 className='my-3 text-4xl font-bold'>Sign Up</h1>
                     <p className='text-sm text-gray-400'>Welcome to AirCNC</p>
                 </div>
-                <form onSubmit={handleSignUp}
+                <form onSubmit={handleSubmit(onSubmit)}
                     className='space-y-6 ng-untouched ng-pristine ng-valid'
                 >
                     <div className='space-y-4'>
@@ -41,11 +38,13 @@ const SignUp = () => {
                             </label>
                             <input
                                 type='text'
-                                name='name'
+                                {...register("name", { required: true })}
+
                                 placeholder='Enter Your Name Here'
                                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
                                 data-temp-mail-org='0'
                             />
+                            {errors.name && <span className="text-red-600">Name is required</span>}
                         </div>
 
                         <div>
@@ -54,12 +53,12 @@ const SignUp = () => {
                             </label>
                             <input
                                 type='email'
-                                name='email'
-                                required
+                                {...register("email", { required: true })}
                                 placeholder='Enter Your Email Here'
                                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
                                 data-temp-mail-org='0'
                             />
+                            {errors.email && <span className="text-red-600">Email is required</span>}
                         </div>
                         <div>
                             <div className='flex justify-between'>
@@ -68,8 +67,17 @@ const SignUp = () => {
                                 </label>
                             </div>
                             <input type='password'
-                                name='password' required placeholder='******' className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                {...register("password", {
+                                    required: true,
+                                    minLength: 6,
+                                    maxLength: 20,
+                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                })} placeholder='******' className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
                             />
+                            {errors.password?.type === 'required' && <p role="alert" className="text-red-600">password is required</p>}
+                            {errors.password?.type === 'minLength' && <p role="alert" className="text-red-600">must be 6 characters</p>}
+                            {errors.password?.type === 'maxLength' && <p role="alert" className="text-red-600">must be less then 20 characters</p>}
+                            {errors.password?.type === 'pattern' && <p role="alert" className="text-red-600">password must have one uppercase, one lower case, one number and one special charaters</p>}
                         </div>
                         <div>
                             <div className='flex justify-between'>
@@ -77,15 +85,26 @@ const SignUp = () => {
                                     Confirm Password
                                 </label>
                             </div>
-                            <input type='password' name='Confirm' required
+                            <input type='password' {...register("confirm", {
+                                required: true,
+                                minLength: 6,
+                                maxLength: 20,
+                                pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+
+                            })}
                                 placeholder='******' className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
                             />
+                            {errors.confirm?.type === 'required' && <p role="alert" className="text-red-600">password is required</p>}
+                            {errors.confirm?.type === 'minLength' && <p role="alert" className="text-red-600">must be 6 characters</p>}
+                            {errors.confirm?.type === 'maxLength' && <p role="alert" className="text-red-600">must be less then 20 characters</p>}
+                            {errors.confirm?.type === 'pattern' && <p role="alert" className="text-red-600">password must have one uppercase, one lower case, one number and one special charaters</p>}
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" name="photo" placeholder="Photo URL" className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'/>
+                            <input type="text" {...register("photo", { required: true })} placeholder="Photo URL" className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900' />
+                            {errors.photo && <span className="text-red-600">Photo URL is required</span>}
                         </div>
                     </div>
 
@@ -100,11 +119,8 @@ const SignUp = () => {
                     </p>
                     <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
                 </div>
-                <div className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
-                    <FcGoogle size={32} />
 
-                    <p>Continue with Google</p>
-                </div>
+                <SocialLogin></SocialLogin>
                 <p className='px-6 text-sm text-center text-gray-400'>
                     Already have an account?{' '}
                     <Link
@@ -115,6 +131,7 @@ const SignUp = () => {
                     </Link>
                     .
                 </p>
+
             </div>
         </div>
     );

@@ -1,8 +1,22 @@
 import { Link } from "react-router-dom";
 import logo from '../../../assets/images/QSY logo final May 7 centered.png'
+import { AuthContext } from "../../../providers/AuthProvider";
+import { useContext } from "react";
+import { FaUserCircle } from "react-icons/fa";
 
 
 const NavBar = () => {
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
     const navBarOption = <>
         <li><Link to='/'>Home</Link></li>
@@ -28,9 +42,23 @@ const NavBar = () => {
                    {navBarOption}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
-            </div>
+            <div className="text-blue-950 navbar-end space-x-3 font-bold text-2xl">
+                    <div className="avatar">
+                        <div className="w-10 h-10 rounded-full ">
+                            {user ?
+                                <img title={user?.displayName} src={user?.photoURL} />
+                                : <FaUserCircle size={30} className="mt-2 "></FaUserCircle>
+                            }
+                        </div>
+                    </div>
+                    {user?.email ?
+                        <>
+                            <button onClick={handleLogOut} className="bg-rose-500  rounded-md py-1 px-4  text-white"><Link to='/login'>LogOut</Link></button>
+                        </>
+                        : <button className="bg-rose-500 rounded-md py-1 px-4  text-white"><Link  to='/login'>Login</Link></button>
+                    }
+
+                </div>
         </div>
     );
 };
