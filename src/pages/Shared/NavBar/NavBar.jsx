@@ -24,7 +24,7 @@ const NavBar = () => {
         <li><Link to='signUp'>Sign Up</Link></li>
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 fixed z-10 bg-block bg-opacity-30 lg:text-white max-w-screen-xl">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -35,7 +35,7 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <img className="h-[50px]" src={logo} alt="" />
-                <a className="btn btn-ghost normal-case text-xl">meditation</a>
+                <a className="btn btn-ghost normal-case text-xl">YOGA</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -53,9 +53,9 @@ const NavBar = () => {
                     </div>
                     {user?.email ?
                         <>
-                            <button onClick={handleLogOut} className="bg-rose-500  rounded-md py-1 px-4  text-white"><Link to='/login'>LogOut</Link></button>
+                            <button onClick={handleLogOut} className="btn btn-warning bg-opacity-80 py-0  text-white"><Link to='/login'>LogOut</Link></button>
                         </>
-                        : <button className="bg-rose-500 rounded-md py-1 px-4  text-white"><Link  to='/login'>Login</Link></button>
+                        : <button className="btn btn-warning bg-opacity-80 py-0  text-white"><Link  to='/login'>Login</Link></button>
                     }
 
                 </div>
