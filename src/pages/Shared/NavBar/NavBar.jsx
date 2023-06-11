@@ -20,8 +20,10 @@ const NavBar = () => {
 
     const navBarOption = <>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='login'>Login</Link></li>
-        <li><Link to='signUp'>Sign Up</Link></li>
+        <li><Link to='/instructors'>Instructors</Link></li>
+        <li><Link to='/classes'>Classes</Link></li>
+        <li><Link to='/login'>Login</Link></li>
+        <li><Link to='/signUp'>Sign Up</Link></li>
     </>
     return (
         <div className="navbar bg-base-100 fixed z-10 bg-block bg-opacity-30 lg:text-white max-w-screen-xl">
@@ -35,7 +37,7 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <img className="h-[50px]" src={logo} alt="" />
-                <a className="btn btn-ghost normal-case text-xl">YOGA</a>
+                <a className="btn btn-ghost normal-case text-xl">YOGA SCHOOL</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

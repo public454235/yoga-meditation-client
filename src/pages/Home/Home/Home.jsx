@@ -1,5 +1,5 @@
 import Banner from "../Banner/Banner";
-import Happening from "../Happening/Happening";
+import ClassesSection from "../ClassesSection/ClassesSection";
 import Parent from "../Parent/Parent";
 
 
@@ -8,7 +8,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Parent></Parent>
-            <Happening></Happening>
+            <ClassesSection></ClassesSection>
         </div>
     );
 };
