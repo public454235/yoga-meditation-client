@@ -1,18 +1,15 @@
-import { useEffect, useState } from "react";
+
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import useClass from "../../../hooks/useClass";
 import ClassTitle from "../ClassTitle/ClassTitle";
 
 
 const ClassesSection = () => {
-    const [classes, setClasses] = useState([])
-
-    useEffect(() => {
-        fetch('class.json')
-            .then(res => res.json())
-            .then(data =>{ 
-                const aerialYoga = data.filter(title=> title.category === 'Aerial_yoga')
-                setClasses(aerialYoga)})
-    }, [])
+    const [classes] = useClass()
+    const AerialYoga = classes.filter(title=> title.category === 'Aerial_yoga')
+   
+   
+    
     return (
         <>
             <section>
@@ -22,7 +19,7 @@ const ClassesSection = () => {
                 ></SectionTitle>
                 <div className="grid md:grid-cols-3 gap-10 my-16">
                     {
-                        classes.map(title => <ClassTitle
+                        AerialYoga.map(title => <ClassTitle
                             key={title._id}
                             title={title}
                         ></ClassTitle>)

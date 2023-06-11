@@ -1,19 +1,15 @@
-import { useEffect, useState } from "react";
+
 import InstructorsTitles from "./InstructorsTitles";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import useInstructors from "../../../hooks/useInstructors";
 
 
 const Instructors = () => {
 
-    const [instructors, setInstructors] = useState([])
+    const [instructors] = useInstructors()
+    const IyengarYoga = instructors.filter(title=> title.category === 'Iyengar_yoga')
 
-    useEffect(() => {
-        fetch('instructors.json')
-            .then(res => res.json())
-            .then(data =>{ 
-                const IyengarYoga = data.filter(title=> title.category === 'Iyengar_yoga')
-                setInstructors(IyengarYoga)})
-    }, [])
+    
     return (
         <>
         <section>
@@ -23,7 +19,7 @@ const Instructors = () => {
             ></SectionTitle>
             <div className="grid md:grid-cols-3 gap-10 my-16">
                 {
-                    instructors.map(title => <InstructorsTitles
+                    IyengarYoga.map(title => <InstructorsTitles
                      key={title._id}
                      title={title}
                     ></InstructorsTitles> )

@@ -26,7 +26,7 @@ const NavBar = () => {
         <li><Link to='/signUp'>Sign Up</Link></li>
     </>
     return (
-        <div className="navbar bg-base-100 fixed z-10 bg-block bg-opacity-30 lg:text-white max-w-screen-xl">
+        <div className="navbar bg-base-100 fixed z-10 bg-block bg-opacity-40 lg:text-white max-w-screen-xl">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
