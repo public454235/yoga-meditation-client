@@ -8,7 +8,7 @@ const Instructors = () => {
     const [instructors, setInstructors] = useState([])
 
     useEffect(() => {
-        fetch('class.json')
+        fetch('instructors.json')
             .then(res => res.json())
             .then(data =>{ 
                 const IyengarYoga = data.filter(title=> title.category === 'Iyengar_yoga')
