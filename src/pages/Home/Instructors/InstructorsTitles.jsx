@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 
-
-const InstructorsTitles = ({title}) => {
+const InstructorsTitles = ({ title }) => {
 
     const { image, name, email } = title
     return (
@@ -11,7 +11,9 @@ const InstructorsTitles = ({title}) => {
                     <h2 className="card-title">Name: {name}</h2>
                     <p>Gmail: {email}</p>
                     <div className="card-actions">
-                        <button onClick={() => handleAddToCart(title)} className="btn btn-outline btn-error bg-slate-100  border-0 border-b-4 mt-4">Add to Cart</button>
+                        <Link to='/instructors'>
+                            <button className="btn btn-outline btn-error bg-slate-100  border-0 border-b-4 mt-4">Add to Cart</button>
+                        </Link>
                     </div>
                 </div>
             </div>

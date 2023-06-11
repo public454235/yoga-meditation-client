@@ -6,7 +6,7 @@ const Classes = () => {
 
     const [classes]= useClass()
     return (
-        <div className="grid md:grid-cols-3 gap-10 my-16">
+        <div className="grid md:grid-cols-3 gap-10 mb-16">
             {
                 classes.map(title=> <ClassTitle
                    key={title._id}
