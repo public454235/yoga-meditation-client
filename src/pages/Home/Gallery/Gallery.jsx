@@ -1,7 +1,7 @@
 import { useKeenSlider } from "keen-slider/react"
-import img1 from '../../../assets/images/yoga10.jpg'
-import img2 from '../../../assets/images/yoga12.jpg'
-import img3 from '../../../assets/images/yoga11.jpg'
+import img1 from '../../../assets/images/yoga12.jpg'
+import img2 from '../../../assets/images/yoga11.jpg'
+import img3 from '../../../assets/images/yoga10.jpg'
 import img4 from '../../../assets/images/yoga9.jpg'
 import img5 from '../../../assets/images/yoga4.jpg'
 import SectionTitle from "../../../components/SectionTitle/SectionTitle"

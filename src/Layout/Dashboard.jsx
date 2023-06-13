@@ -23,7 +23,7 @@ const Dashboard = () => {
 
                         <li><NavLink to='/'><FaHome></FaHome> Student Home</NavLink></li>
                         <li><NavLink to='/dashboard/myClass'><SiGoogleclassroom></SiGoogleclassroom> My Selected Classes</NavLink></li>
-                        <li><NavLink to='/enrolled'><GiClassicalKnowledge></GiClassicalKnowledge> My Enrolled Classes</NavLink></li>
+                        <li><NavLink to='/dashboard/enrolled'><GiClassicalKnowledge></GiClassicalKnowledge> My Enrolled Classes</NavLink></li>
                         <li><NavLink><FiLogOut></FiLogOut> LogOut</NavLink></li>
                     </ul>
 

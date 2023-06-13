@@ -6,9 +6,9 @@ const InstructorsSchool = () => {
     const [instructors] = useInstructors()
     return (
         <>
-            <h1 className="text-4xl text-center text-slate-700 uppercase font-bold pt-28 pb-10">All Instructors</h1>
+            <h1 className="text-4xl text-center bg-slate-900 text-slate-600 uppercase font-bold pt-28 pb-10">All Instructors</h1>
             
-            <div className="grid md:grid-cols-3 gap-10 mb-16">
+            <div className="grid md:grid-cols-3 gap-10 mb-16 mt-4">
                 {
                     instructors.map(title => <InstructorsTitles
                         key={title._id}

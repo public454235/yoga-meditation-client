@@ -54,7 +54,7 @@ const MyClass = () => {
                 <table className="table w-full">
                     {/* head */}
                     <thead>
-                        <tr className="text-center bg-black bg-opacity-40 text-white">
+                        <tr className="text-center bg-slate-950 bg-opacity-80 text-white">
                             <th>#</th>
                             <th>Image</th>
                             <th>Name</th>
@@ -88,7 +88,7 @@ const MyClass = () => {
                                 <td className="text-center"><Link to='/dashboard/payment'><button className="btn btn-success btn-sm">pay</button></Link></td>
                                 <td>
                                     <div className="text-center">
-                                        <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white"><FaTrashAlt></FaTrashAlt></button>
+                                        <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-400 text-white"><FaTrashAlt></FaTrashAlt></button>
                                     </div>
 
                                 </td>
