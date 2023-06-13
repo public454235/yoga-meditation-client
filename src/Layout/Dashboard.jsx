@@ -1,7 +1,9 @@
-import {Outlet} from "react-router-dom"
-import { Link } from "react-router-dom";
-import { FaHome} from 'react-icons/fa';
-import { FiLogOut} from 'react-icons/fi';
+import { Outlet } from "react-router-dom"
+import { NavLink } from "react-router-dom";
+import { FaHome } from 'react-icons/fa';
+import { FiLogOut } from 'react-icons/fi';
+import { SiGoogleclassroom } from 'react-icons/si';
+import { GiClassicalKnowledge } from 'react-icons/gi';
 
 
 
@@ -15,14 +17,14 @@ const Dashboard = () => {
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
                 </div>
-                <div className="drawer-side">
+                <div className="drawer-side bg-orange-400">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                        {/* Sidebar content here */}
-                        <li><Link to='/'><FaHome></FaHome> Student Home</Link></li>
-                        <li><Link>My Selected Classes</Link></li>
-                        <li><Link>My Enrolled Classes</Link></li>
-                        <li><Link><FiLogOut></FiLogOut> LogOut</Link></li>
+                    <ul className="menu p-4 w-80">
+
+                        <li><NavLink to='/'><FaHome></FaHome> Student Home</NavLink></li>
+                        <li><NavLink to='/dashboard/myClass'><SiGoogleclassroom></SiGoogleclassroom> My Selected Classes</NavLink></li>
+                        <li><NavLink to='/enrolled'><GiClassicalKnowledge></GiClassicalKnowledge> My Enrolled Classes</NavLink></li>
+                        <li><NavLink><FiLogOut></FiLogOut> LogOut</NavLink></li>
                     </ul>
 
                 </div>

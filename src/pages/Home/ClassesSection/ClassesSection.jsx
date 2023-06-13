@@ -17,7 +17,7 @@ const ClassesSection = () => {
                     heading={'Classes Section'}
                     subHeading={'We at KRIYA provide various services to the nature of the clients. Wish how you would like to spend the time here we can talk and come to a conclusion.'}
                 ></SectionTitle>
-                <div className="grid md:grid-cols-3 gap-10 my-16">
+                <div className="grid md:grid-cols-3 gap-10 my-16 justify-center">
                     {
                         AerialYoga.map(title => <ClassTitle
                             key={title._id}

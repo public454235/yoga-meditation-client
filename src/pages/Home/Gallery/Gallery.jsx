@@ -20,7 +20,7 @@ const Gallery = () => {
         heading={'Gallery'}
         
         ></SectionTitle>
-            <div ref={sliderRef} className="keen-slider">
+            <div ref={sliderRef} className="keen-slider mb-8">
                 <div className="keen-slider__slide number-slide1"><img src={img1} alt="" /></div>
                 <div className="keen-slider__slide number-slide2"><img src={img2} alt="" /></div>
                 <div className="keen-slider__slide number-slide3"><img src={img3} alt="" /></div>
