@@ -1,19 +1,26 @@
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import useClass from "../../hooks/useClass";
-import ClassTitle from "../Home/ClassTitle/ClassTitle";
+import ClassesTitle from "./ClassesTitle";
 
 
 const Classes = () => {
 
-    const [classes]= useClass()
+    const [classes] = useClass()
     return (
-        <div className="grid md:grid-cols-3 gap-10 mb-16">
-            {
-                classes.map(title=> <ClassTitle
-                   key={title._id}
-                   title={title}
-                ></ClassTitle>)
-            }
-        </div>
+        <>
+            <SectionTitle
+                heading={'All Class'}
+            ></SectionTitle>
+            <div className="grid md:grid-cols-3 gap-10 mb-16">
+                {
+                    classes.map(title => <ClassesTitle
+                        key={title._id}
+                        title={title}
+                    ></ClassesTitle>
+                    )
+                }
+            </div>
+        </>
     );
 };
 

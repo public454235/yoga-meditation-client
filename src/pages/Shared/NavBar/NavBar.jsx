@@ -22,8 +22,14 @@ const NavBar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
-        <li><Link to='/login'>Login</Link></li>
-        <li><Link to='/signUp'>Sign Up</Link></li>
+        {
+            user?.email ?
+                <li><Link to='/dashboard/myClass '>Dashboard</Link></li> : <></>
+
+        }
+
+
+
     </>
     return (
         <div className="navbar  fixed z-10 bg-slate-950 bg-opacity-50 lg:text-white max-w-screen-xl">
@@ -41,26 +47,27 @@ const NavBar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                   {navBarOption}
+                    {navBarOption}
                 </ul>
             </div>
             <div className="text-blue-950 navbar-end space-x-3 font-bold text-2xl">
-                    <div className="avatar">
-                        <div className="w-10 h-10 rounded-full ">
-                            {user ?
-                                <img title={user?.displayName} src={user?.photoURL} />
-                                : <FaUserCircle size={30} className="mt-2 "></FaUserCircle>
-                            }
-                        </div>
+                <div className="avatar">
+                    <div className="w-10 h-10 rounded-full ">
+                        {user ?
+                            <img title={user?.displayName} src={user?.photoURL} />
+                            : <FaUserCircle size={30} className="mt-2 "></FaUserCircle>
+                        }
                     </div>
-                    {user?.email ?
-                        <>
-                            <button onClick={handleLogOut} className="btn btn-warning bg-opacity-80 py-0  text-white"><Link to='/login'>LogOut</Link></button>
-                        </>
-                        : <button className="btn btn-warning bg-opacity-80 py-0  text-white"><Link  to='/login'>Login</Link></button>
-                    }
-
                 </div>
+                {user ?
+                    <>
+
+                        <button onClick={handleLogOut} className="btn btn-warning bg-opacity-80 py-0  text-white"><Link to='/login'>LogOut</Link></button>
+                    </>
+                    : <button className="btn btn-warning bg-opacity-80 py-0  text-white"><Link to='/login'>Login</Link></button>
+                }
+
+            </div>
         </div>
     );
 };

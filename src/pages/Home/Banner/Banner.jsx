@@ -10,10 +10,17 @@ const Banner = () => {
         <AwesomeSlider>
             <div>
                 <img src={yoga3} alt="" />
+             
             </div>
-            <div><img src={yoga7} alt="" /></div>
+
+            <div>
+                <img src={yoga7} alt="" />
+
+            </div>
+
             <div><img src={yoga8} alt="" /></div>
             <div><img src={yoga6} alt="" /></div>
+
         </AwesomeSlider>
     );
 };

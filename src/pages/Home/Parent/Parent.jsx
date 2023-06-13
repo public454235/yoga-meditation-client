@@ -3,7 +3,7 @@ import yoga3 from "../../../assets/images/yoga3.jpg"
 
 const Parent = () => {
     return (
-        <div className="hero min-h-screen bg-base-200 lg:px-36">
+        <div className="hero min-h-screen bg-base-200 lg:px-36 mb-8">
             <div className="hero-content flex-col lg:flex-row">
                 <div className="w-1/2">
                     <img src={yoga3} className="max-w-sm rounded-lg shadow-2xl" />

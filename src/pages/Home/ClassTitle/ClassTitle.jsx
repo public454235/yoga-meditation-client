@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 
+
 const ClassTitle = ({ title }) => {
     const { image, name, price, instructor, available } = title
+
+
     return (
         <div>
+            
             <div className="card w-96 bg-base-100 shadow-xl">
                 <figure><img src={image} alt="Shoes" /></figure>
                 <div className="card-body flex flex-col">
