@@ -24,7 +24,7 @@ const NavBar = () => {
         <li><Link to='/instructors'>Instructors</Link></li>
         {
             user?.email ?
-                <li><Link to='/dashboard/myClass '>Dashboard</Link></li> : <></>
+                <li><Link to='/dashboard'>Dashboard</Link></li> : <></>
 
         }
 
