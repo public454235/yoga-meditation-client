@@ -2,6 +2,8 @@ import { FcGoogle } from "react-icons/fc";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import { saveUser } from "../../hooks/saveUser";
+import Swal from "sweetalert2";
 
 
 const SocialLogin = () => {
@@ -16,8 +18,17 @@ const SocialLogin = () => {
         .then(result=>{
             const loggedUser=result.loggedUser
             console.log(loggedUser)
-            navigate(from, {replace: true});
+            saveUser(result.user)
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'User Login Successful',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            navigate(from, { replace: true })
         })
+        .catch(error => console.log(error))
     }
     return (
         <div>

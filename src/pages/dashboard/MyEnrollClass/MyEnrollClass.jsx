@@ -12,7 +12,7 @@ const MyEnrollClass = () => {
             </Helmet>
             <div className='mt-10'>
 
-                <h1 className='text-3xl text-center font-bold'>My All Class </h1>
+                <h1 className='text-4xl text-center bg-slate-900 text-slate-600 uppercase font-bold py-8'>My All Class </h1>
                 <div className='grid md:grid-cols-2 sm:grid-cols-1 gap-6 mt-10 mb-8'>
                     {
                         classes.map(item =><Enroll
