@@ -37,7 +37,7 @@ const Dashboard = () => {
                             isAdmin ?
                                 <>
                                     <li><NavLink to='/'><FaHome></FaHome> Admin Home</NavLink></li>
-                                    <li><NavLink to='/dashboard/allUsers'><SiGoogleclassroom></SiGoogleclassroom> Manage Users</NavLink></li>
+                                    <li><NavLink to='/dashboard/manageUsers'><SiGoogleclassroom></SiGoogleclassroom> Manage Users</NavLink></li>
                                     <li><NavLink to='/dashboard/manageClass'><GiClassicalKnowledge></GiClassicalKnowledge> Manage Classes</NavLink></li>
                                     <li><button onClick={handleLogOut}><NavLink className="flex justify-center items-center "><FiLogOut></FiLogOut> LogOut</NavLink></button></li>
                                 </> :

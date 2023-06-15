@@ -1,19 +1,20 @@
 
 
 const Manage = ({item}) => {
-    const { _id, name, image, price, availableSeats, instructor } = item;
+    const { name, image, price, available, instructor } = item;
     return (
-        <div className="card card-compact md:w-96 w-full bg-base-100 shadow-xl">
+        <div className="card w-96 bg-base-100 shadow-xl">
             <figure><img src={image} alt="Shoes" /></figure>
-            <div className="card-body">
+            <div className="card-body flex flex-col">
                 <h2 className="card-title">Instructor Name: {instructor}</h2>
                 <h2 className="card-title">Class Name: {name}</h2>
-                <h2 className="card-title">Price: ${price}</h2>
-                <h2 className="card-title">Available Seats: {availableSeats}</h2>
+                <p>Price: ${price}</p>
+                <p>Available: {available}</p>
+                
                 <div className="flex justify-between">
-                    <button className="btn btn-outline btn-primary mt-5">Approve</button>
-                    <button className="btn btn-outline btn-accent mt-5">Deny</button>
-                    <button className="btn btn-outline btn-secondary mt-5">send feedback</button>
+                    <button className="btn btn-outline btn-neutral bg-slate-100   mt-4">Approve</button>
+                    <button className="btn btn-outline btn-neutral bg-slate-100   mt-4">Deny</button>
+                    <button className="btn btn-outline btn-neutral bg-slate-100    mt-4">send feedback</button>
                 </div>
             </div>
         </div>

@@ -1,21 +1,24 @@
 import { Helmet } from "react-helmet-async";
 import Manage from "./Manage";
-import useInstructors from "../../../hooks/useInstructors";
+import useClass from "../../../hooks/useClass";
+
 
 
 const ManageClasses = () => {
-    const [instructors]= useInstructors()
+    const [classes] = useClass()
+    
     return (
         <>
             <Helmet>
                 <title>Yoga | Manage Class</title>
             </Helmet>
-            <div className='mt-10'>
-
-                <h1 className='text-3xl text-center font-bold'>Total Classes:  {instructors.length}</h1>
-                <div className='grid md:grid-cols-2 sm:grid-cols-1 gap-6 mt-10 mb-8'>
+            <div className="w-full">
+                <h1 className="text-4xl text-center bg-slate-900 text-slate-600 uppercase font-bold pt-10 pb-10">Total Classes:  {classes.length}</h1>
+                </div>
+            <div>  
+                <div className="grid md:grid-cols-2 gap-10 mb-16 mt-4">
                     {
-                        instructors.map(item => <Manage item={item} key={item._id}></Manage>)
+                        classes.map(item => <Manage item={item} key={item._id}></Manage>)
                     }
 
                 </div>

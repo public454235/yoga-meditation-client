@@ -1,16 +1,17 @@
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import { FaEyeSlash, FaEye } from 'react-icons/fa';
 
 const SignUp = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm()
-        
-   
+
+
     const { createUser, updateUserProfile } = useContext(AuthContext)
     const navigate = useNavigate()
 
@@ -34,9 +35,16 @@ const SignUp = () => {
                     })
                     .catch(error => console.log(error))
             })
-            
+
 
     };
+
+    // handle password
+    const [passwordEye, setPasswordEye] = useState(false)
+
+    const handlePasswordClick = () => {
+        setPasswordEye(!passwordEye)
+    }
 
 
     return (
@@ -88,18 +96,30 @@ const SignUp = () => {
                                         Password
                                     </label>
                                 </div>
-                                <input type='password'
-                                    {...register("password", {
-                                        required: true,
-                                        minLength: 6,
-                                        maxLength: 20,
-                                        pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
-                                    })} placeholder='******' className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
-                                />
-                                {errors.password?.type === 'required' && <p role="alert" className="text-red-600">password is required</p>}
-                                {errors.password?.type === 'minLength' && <p role="alert" className="text-red-600">must be 6 characters</p>}
-                                {errors.password?.type === 'maxLength' && <p role="alert" className="text-red-600">must be less then 20 characters</p>}
-                                {errors.password?.type === 'pattern' && <p role="alert" className="text-red-600">password must have one uppercase, one lower case, one number and one special charaters</p>}
+                                <div className="relative">
+                                    <input type={(passwordEye === false) ? 'password' : 'text'}
+                                        {...register("password", {
+                                            required: true,
+                                            minLength: 6,
+                                            maxLength: 20,
+                                            pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                        })} placeholder='******' className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                    />
+                                    {errors.password?.type === 'required' && <p role="alert" className="text-red-600">password is required</p>}
+                                    {errors.password?.type === 'minLength' && <p role="alert" className="text-red-600">must be 6 characters</p>}
+                                    {errors.password?.type === 'maxLength' && <p role="alert" className="text-red-600">must be less then 20 characters</p>}
+                                    {errors.password?.type === 'pattern' && <p role="alert" className="text-red-600">password must have one uppercase, one lower case, one number and one special charaters</p>}
+
+                                    {/* eye */}
+
+
+                                    <div className="text-1xl absolute top-3 right-5">
+                                        {
+                                            (passwordEye === false) ? < FaEyeSlash onClick={handlePasswordClick}></FaEyeSlash> : <FaEye onClick={handlePasswordClick}></FaEye>
+                                        }
+
+                                    </div>
+                                </div>
                             </div>
                             <div>
                                 <div className='flex justify-between'>
@@ -107,19 +127,30 @@ const SignUp = () => {
                                         Confirm Password
                                     </label>
                                 </div>
-                                <input type='password' {...register("confirm", {
-                                    required: true,
-                                    minLength: 6,
-                                    maxLength: 20,
-                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                <div className="relative">
+                                    <input type={(passwordEye === false) ? 'password' : 'text'} {...register("confirm", {
+                                        required: true,
+                                        minLength: 6,
+                                        maxLength: 20,
+                                        pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
 
-                                })}
-                                    placeholder='******' className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
-                                />
-                                {errors.confirm?.type === 'required' && <p role="alert" className="text-red-600">password is required</p>}
-                                {errors.confirm?.type === 'minLength' && <p role="alert" className="text-red-600">must be 6 characters</p>}
-                                {errors.confirm?.type === 'maxLength' && <p role="alert" className="text-red-600">must be less then 20 characters</p>}
-                                {errors.confirm?.type === 'pattern' && <p role="alert" className="text-red-600">password must have one uppercase, one lower case, one number and one special charaters</p>}
+                                    })}
+                                        placeholder='******' className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                    />
+                                    {errors.confirm?.type === 'required' && <p role="alert" className="text-red-600">password is required</p>}
+                                    {errors.confirm?.type === 'minLength' && <p role="alert" className="text-red-600">must be 6 characters</p>}
+                                    {errors.confirm?.type === 'maxLength' && <p role="alert" className="text-red-600">must be less then 20 characters</p>}
+                                    {errors.confirm?.type === 'pattern' && <p role="alert" className="text-red-600">password must have one uppercase, one lower case, one number and one special charaters</p>}
+
+                                    {/* eye */}
+
+                                    <div className="text-1xl absolute top-3 right-5">
+                                        {
+                                            (passwordEye === false) ? < FaEyeSlash onClick={handlePasswordClick}></FaEyeSlash> : <FaEye onClick={handlePasswordClick}></FaEye>
+                                        }
+
+                                    </div>
+                                </div>
                             </div>
                             <div className="form-control">
                                 <label className="label">

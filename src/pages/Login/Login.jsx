@@ -1,14 +1,16 @@
 import { Link, } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import { FaEyeSlash, FaEye } from 'react-icons/fa';
+
 
 
 const Login = () => {
 
-    const {signIn}= useContext(AuthContext)
-    
+    const { signIn } = useContext(AuthContext)
+
 
     const handleLogin = event => {
         event.preventDefault();
@@ -17,21 +19,28 @@ const Login = () => {
         const password = form.password.value;
         console.log(email, password)
         signIn(email, password)
-        .then(result=>{
-            const user = result.user
-            console.log(user)
+            .then(result => {
+                const user = result.user
+                console.log(user)
 
-            Swal.fire({
-                title: 'Custom animation with Animate.css',
-                showClass: {
-                  popup: 'animate__animated animate__fadeInDown'
-                },
-                hideClass: {
-                  popup: 'animate__animated animate__fadeOutUp'
-                }
-              })
-              
-        })
+                Swal.fire({
+                    title: 'Custom animation with Animate.css',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                })
+
+            })
+    }
+
+    // handle password
+    const [passwordEye, setPasswordEye] = useState(false)
+
+    const handlePasswordClick = () => {
+        setPasswordEye(!passwordEye)
     }
     return (
         <div className='flex justify-center items-center min-h-screen'>
@@ -61,9 +70,20 @@ const Login = () => {
                                     Password
                                 </label>
                             </div>
-                            <input type='password' name='password' required placeholder='******'
-                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
-                            />
+                            <div className="relative">
+                                <input type={(passwordEye === false) ? 'password' : 'text'} name='password' required placeholder='******'
+                                    className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                />
+
+                                {/* eye */}
+
+                                <div className="text-1xl absolute top-3 right-5">
+                                        {
+                                            (passwordEye === false) ? < FaEyeSlash onClick={handlePasswordClick}></FaEyeSlash> : <FaEye onClick={handlePasswordClick}></FaEye>
+                                        }
+
+                                    </div>
+                            </div>
                         </div>
                     </div>
 
