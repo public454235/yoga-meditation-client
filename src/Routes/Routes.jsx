@@ -11,6 +11,7 @@ import InstructorsSchool from "../pages/InstructorsSchool/InstructorsSchool";
 import Dashboard from "../Layout/Dashboard";
 import MyClass from "../pages/MyClass/MyClass";
 import MyEnrollClass from "../pages/dashboard/MyEnrollClass/MyEnrollClass";
+import ManageUsers from "../pages/dashboard/ManageUsers/ManageUsers";
 
 
 export const router = createBrowserRouter([
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
       {
         path: 'enrolled',
         element: <MyEnrollClass></MyEnrollClass>
+      },
+      {
+        path: 'allUsers',
+        element: <ManageUsers></ManageUsers>
       }
     ]
   }

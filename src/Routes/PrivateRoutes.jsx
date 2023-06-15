@@ -6,7 +6,6 @@ const PrivateRoutes = ({children}) => {
 
     const { user, loading } = useContext(AuthContext)
     const location = useLocation();
-    console.log('user in private router ',location)
     if(loading){
         return <progress className="progress w-56"></progress>
     }

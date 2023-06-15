@@ -8,8 +8,6 @@ const AdminRouter = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
     const [isAdmin, isAdminLoading] = useAdmin()
     const location = useLocation()
-    // const from = location.state?.from?.pathname || '/';
-
     if (loading || isAdminLoading) {
         return <progress className="progress progress-primary w-56" value="40" max="100"></progress>
     }
