@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 const AllUser = () => {
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch(' https://summer-camp-server-delta.vercel.app/users')
+        const res = await fetch('http://localhost:5000/users')
         return res.json()
     })
 
