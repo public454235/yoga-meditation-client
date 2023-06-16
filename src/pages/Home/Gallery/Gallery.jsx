@@ -8,8 +8,10 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle"
 
 
 
+
 const Gallery = () => {
 
+    
     
 
     const [sliderRef] = useKeenSlider({
@@ -25,12 +27,14 @@ const Gallery = () => {
         
         ></SectionTitle>
             <div ref={sliderRef} className="keen-slider mb-8">
+           
                 <div className="keen-slider__slide number-slide1"><img src={img1} alt="" /></div>
                 <div className="keen-slider__slide number-slide2"><img src={img2} alt="" /></div>
                 <div className="keen-slider__slide number-slide3"><img src={img3} alt="" /></div>
                 <div className="keen-slider__slide number-slide4"><img src={img4} alt="" /></div>
                 <div className="keen-slider__slide number-slide5"><img src={img5} alt="" /></div>
                 <div className="keen-slider__slide number-slide6"><img src={img1} alt="" /></div>
+                
             </div>
         </>
     );

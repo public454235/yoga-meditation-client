@@ -17,7 +17,7 @@ const ClassesTitle = ({ title }) => {
         console.log(title)
         if (user && user.email) {
             const cartTitle = { classTitleId: _id, name, image, price, email: user.email }
-            fetch('http://localhost:5000/carts', {
+            fetch('https://meditation-server-assignment12.vercel.app/carts', {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(cartTitle)

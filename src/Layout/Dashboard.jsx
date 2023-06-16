@@ -51,7 +51,7 @@ const Dashboard = () => {
                                             <>
                                                 <li><NavLink to='/'><FaHome></FaHome> Instructor Home</NavLink></li>
                                                 <li><NavLink to='/dashboard/addClass'><SiGoogleclassroom></SiGoogleclassroom> Add a Class</NavLink></li>
-                                                <li><NavLink to='/dashboard/enrollClass'><GiClassicalKnowledge></GiClassicalKnowledge> My Classes</NavLink></li>
+                                                <li><NavLink to='/dashboard/enrolled'><GiClassicalKnowledge></GiClassicalKnowledge> My Classes</NavLink></li>
                                                 <li><button onClick={handleLogOut}><NavLink className="flex justify-center items-center "><FiLogOut ></FiLogOut> LogOut</NavLink></button></li>
                                             </>
 

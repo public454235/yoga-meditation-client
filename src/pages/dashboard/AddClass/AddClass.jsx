@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form"
 import { useContext } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { AuthContext } from '../../../providers/AuthProvider';
-
+import { Helmet } from "react-helmet-async";
 const img_token = import.meta.env.VITE_IMGBB_KEY;
 
 const AddClass = () => {
@@ -11,7 +11,7 @@ const AddClass = () => {
     const [axiosSecure] = useAxiosSecure()
     const { user } = useContext(AuthContext)
     const { register, handleSubmit, } = useForm();
-    const img_token_url = `http://localhost:5000=${img_token}`
+    const img_token_url = `https://meditation-server-assignment12.vercel.app=${img_token}`
     const onSubmit = data => {
         const formData = new FormData()
         formData.append('image', data.photoURL[0]
@@ -26,9 +26,9 @@ const AddClass = () => {
                     const imageURL = imgResponse.data.display_url;
                     const { name, price, email, category, instructor, availableSeats } = data;
                     const newClass = { name, email, price: parseFloat(price), category, availableSeats, instructor, image: imageURL }
-                    axiosSecure.post('/instructor', newClass)
+                    axiosSecure.post('/class', newClass)
                         .then(data => {
-                            alert('Add Succesfull')
+                            alert('Add SuccessFull')
                             console.log(data)
                         })
                 }
@@ -37,8 +37,13 @@ const AddClass = () => {
     };
     return (
         <div>
+            <Helmet>
+                <title>Yoga || Add A Class</title>
+            </Helmet>
+            <div className="w-full">
+                <h1 className='text-4xl bg-slate-900 text-center text-slate-600 uppercase font-bold pt-8 pb-8'>Add A Class</h1>
+            </div>
             <div className='w-full p-10'>
-                <h1 className='text-4xl text-red-600 text-center mb-10 font-bold'>Add A Class</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='flex'>
                         <div className="form-control w-full max-w-xs mr-5">
@@ -90,7 +95,7 @@ const AddClass = () => {
                         </label>
                         <textarea {...register("details", { required: true })} className="textarea textarea-bordered h-24" placeholder="Details"></textarea>
                     </div>
-                    <input className='btn btn-success mt-4' type="submit" value="Add Item" />
+                    <input className='btn btn-secondary mt-4' type="submit" value="Add Item" />
                 </form>
             </div>
         </div>

@@ -14,6 +14,8 @@ import MyEnrollClass from "../pages/dashboard/MyEnrollClass/MyEnrollClass";
 import ManageClasses from "../pages/dashboard/Manage/ManageClasses";
 import ManageUsers from "../pages/dashboard/ManageUsers/ManageUsers";
 import AddClass from "../pages/dashboard/AddClass/AddClass";
+import PrivateRoutes from "./PrivateRoutes";
+import AdminRouter from "./AdminRouter";
 
 
 export const router = createBrowserRouter([
@@ -46,7 +48,7 @@ export const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
     children: [
       {
         path: 'myClass',
@@ -58,7 +60,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'manageUsers',
-        element: <ManageUsers></ManageUsers>
+        element: <AdminRouter><ManageUsers></ManageUsers></AdminRouter>
       },
       {
         path: 'addClass',
@@ -66,7 +68,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'manageClass',
-        element: <ManageClasses></ManageClasses>
+        element: <AdminRouter><ManageClasses></ManageClasses></AdminRouter>
       }
     ]
   }

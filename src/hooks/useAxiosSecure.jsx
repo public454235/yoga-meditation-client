@@ -9,7 +9,7 @@ const useAxiosSecure = () => {
     const navigate = useNavigate()
 
     const axiosSecure = axios.create({
-        baseURL: 'http://localhost:5000'
+        baseURL: 'https://meditation-server-assignment12.vercel.app'
 
     });
     useEffect(() => {
