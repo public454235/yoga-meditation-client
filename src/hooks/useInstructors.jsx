@@ -6,7 +6,7 @@ const useInstructors = () => {
 
 
     useEffect(() => {
-        fetch('https://meditation-server-assignment12.vercel.app/instructors')
+        fetch('http://localhost:5000/instructors')
             .then(res => res.json())
             .then(data => {
                 setInstructors(data)

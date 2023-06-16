@@ -14,7 +14,7 @@ const StudentClass = ({item}) => {
     const handleAddClass = item => {
         if (user && user?.email) {
             const bookingClass = { classId:  name, image, email: user?.email, price }
-            fetch('https://meditation-server-assignment12.vercel.app/carts', {
+            fetch('http://localhost:5000/carts', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

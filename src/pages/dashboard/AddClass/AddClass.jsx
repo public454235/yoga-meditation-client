@@ -11,7 +11,7 @@ const AddClass = () => {
     const [axiosSecure] = useAxiosSecure()
     const { user } = useContext(AuthContext)
     const { register, handleSubmit, } = useForm();
-    const img_token_url = `https://meditation-server-assignment12.vercel.app=${img_token}`
+    const img_token_url = `http://localhost:5000=${img_token}`
     const onSubmit = data => {
         const formData = new FormData()
         formData.append('image', data.photoURL[0]

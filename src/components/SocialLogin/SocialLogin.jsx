@@ -2,7 +2,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-import { saveUser } from "../../hooks/saveUser";
+// import { saveUser } from "../../hooks/saveUser";
 import Swal from "sweetalert2";
 
 
@@ -18,7 +18,7 @@ const SocialLogin = () => {
             .then(result => {
                 const loggedUser = result.user
                 console.log(loggedUser)
-                saveUser(result.user)
+                // saveUser(result.user)
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
