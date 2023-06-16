@@ -45,6 +45,12 @@ const SignUp = () => {
     const handlePasswordClick = () => {
         setPasswordEye(!passwordEye)
     }
+    // handle conf password
+    const [ConfirmPasswordEye, setConfirmPasswordEye] = useState(false)
+
+    const handleConfirmPasswordClick = () => {
+        setConfirmPasswordEye(!ConfirmPasswordEye)
+    }
 
 
     return (
@@ -128,7 +134,7 @@ const SignUp = () => {
                                     </label>
                                 </div>
                                 <div className="relative">
-                                    <input type={(passwordEye === false) ? 'password' : 'text'} {...register("confirm", {
+                                    <input type={(ConfirmPasswordEye === false) ? 'password' : 'text'} {...register("confirm", {
                                         required: true,
                                         minLength: 6,
                                         maxLength: 20,
@@ -146,7 +152,7 @@ const SignUp = () => {
 
                                     <div className="text-1xl absolute top-3 right-5">
                                         {
-                                            (passwordEye === false) ? < FaEyeSlash onClick={handlePasswordClick}></FaEyeSlash> : <FaEye onClick={handlePasswordClick}></FaEye>
+                                            (ConfirmPasswordEye === false) ? < FaEyeSlash onClick={handleConfirmPasswordClick}></FaEyeSlash> : <FaEye onClick={handleConfirmPasswordClick}></FaEye>
                                         }
 
                                     </div>

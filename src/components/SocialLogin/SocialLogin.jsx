@@ -2,7 +2,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-import { saveUser } from "../../hooks/saveUser";
+// import { saveUser } from "../../hooks/saveUser";
 import Swal from "sweetalert2";
 
 
@@ -15,29 +15,29 @@ const SocialLogin = () => {
 
     const handleGoogleSigIn = () => {
         googleSignIn()
-        .then(result=>{
-            const loggedUser=result.loggedUser
-            console.log(loggedUser)
-            saveUser(result.user)
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'User Login Successful',
-                showConfirmButton: false,
-                timer: 1500
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser)
+                // saveUser(result.user)
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'User Login Successful',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                navigate(from, { replace: true })
             })
-            navigate(from, { replace: true })
-        })
-        .catch(error => console.log(error))
+            .catch(error => console.log(error))
     }
     return (
         <div>
             <div className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
-                <button className="flex justify-center items-center space-x-2" onClick={handleGoogleSigIn}><FcGoogle  size={32} /><p>Continue with Google</p></button>
+                <button className="flex justify-center items-center space-x-2" onClick={handleGoogleSigIn}><FcGoogle size={32} /><p>Continue with Google</p></button>
 
-                    
+
             </div>
-            
+
         </div>
     );
 };

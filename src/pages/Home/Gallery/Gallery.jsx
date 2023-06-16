@@ -5,9 +5,13 @@ import img3 from '../../../assets/images/yoga10.jpg'
 import img4 from '../../../assets/images/yoga9.jpg'
 import img5 from '../../../assets/images/yoga4.jpg'
 import SectionTitle from "../../../components/SectionTitle/SectionTitle"
+import ReactImageZoom from 'react-image-zoom';
 
 
 const Gallery = () => {
+
+    const props = {width: 400, height: 250, zoomWidth: 500, img: "1.jpg"};
+
     const [sliderRef] = useKeenSlider({
         slides: {
             perView: 2,

@@ -94,7 +94,7 @@ const ManageUsers = () => {
                                 </td>
                                 <td className="text-center">
                                     {
-                                        user.role === 'instructor' ?
+                                        user.role === 'instructors' ?
                                             <>
                                                 <button className="btn btn-primary btn-xs " disabled> Instructor</button>
                                             </> :

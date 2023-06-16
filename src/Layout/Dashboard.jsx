@@ -4,7 +4,7 @@ import { FaHome } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';
 import { SiGoogleclassroom } from 'react-icons/si';
 import { GiClassicalKnowledge } from 'react-icons/gi';
-// import useAdmin from "../hooks/useAdmin";
+import useAdmin from "../hooks/useAdmin";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 
@@ -18,9 +18,9 @@ const Dashboard = () => {
             .catch(error => console.log(error))
     }
 
-    // const [adminRole] = useAdmin()
-    // console.log(adminRole)
-    const isAdmin = true;
+    const [adminRole] = useAdmin()
+    console.log(adminRole)
+    // const isAdmin = true;
     return (
         <div>
             <div className="drawer lg:drawer-open">
@@ -33,24 +33,13 @@ const Dashboard = () => {
                 <div className="drawer-side bg-orange-400">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80">
-                        {
-                            isAdmin ?
-                                <>
-                                    <li><NavLink to='/'><FaHome></FaHome> Admin Home</NavLink></li>
-                                    <li><NavLink to='/dashboard/manageUsers'><SiGoogleclassroom></SiGoogleclassroom> Manage Users</NavLink></li>
-                                    <li><NavLink to='/dashboard/manageClass'><GiClassicalKnowledge></GiClassicalKnowledge> Manage Classes</NavLink></li>
-                                    <li><button onClick={handleLogOut}><NavLink className="flex justify-center items-center "><FiLogOut></FiLogOut> LogOut</NavLink></button></li>
-                                </> :
-                                <>
-                                    <h1>Hello</h1>
-                                </>
-                        }
+                        
 
-                        {/* {
+                        {
                             adminRole === 'admin' ?
                                 <>
                                     <li><NavLink to='/'><FaHome></FaHome> Admin Home</NavLink></li>
-                                    <li><NavLink to='/dashboard/allUsers'><SiGoogleclassroom></SiGoogleclassroom> Manage Users</NavLink></li>
+                                    <li><NavLink to='/dashboard/manageUsers'><SiGoogleclassroom></SiGoogleclassroom> Manage Users</NavLink></li>
                                     <li><NavLink to='/dashboard/manageClass'><GiClassicalKnowledge></GiClassicalKnowledge> Manage Classes</NavLink></li>
                                     <li><button onClick={handleLogOut}><NavLink className="flex justify-center items-center "><FiLogOut></FiLogOut> LogOut</NavLink></button></li>
                                 </>
@@ -80,6 +69,7 @@ const Dashboard = () => {
                                                     </>
                                                     :
                                                     <>
+                                                       
                                                         <li><NavLink to='/'><FaHome></FaHome> Student Home</NavLink></li>
                                                         <li><NavLink to='/dashboard/myClass'><SiGoogleclassroom></SiGoogleclassroom> My Selected Classes</NavLink></li>
                                                         <li><NavLink to='/dashboard/enrolled'><GiClassicalKnowledge></GiClassicalKnowledge> My Enrolled Classes</NavLink></li>
@@ -90,7 +80,7 @@ const Dashboard = () => {
 
                                     }
                                 </>
-                        } */}
+                        }
 
 
                     </ul>

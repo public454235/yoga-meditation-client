@@ -13,6 +13,7 @@ import MyClass from "../pages/MyClass/MyClass";
 import MyEnrollClass from "../pages/dashboard/MyEnrollClass/MyEnrollClass";
 import ManageClasses from "../pages/dashboard/Manage/ManageClasses";
 import ManageUsers from "../pages/dashboard/ManageUsers/ManageUsers";
+// import AddClass from "../pages/dashboard/AddClass/AddClass";
 
 
 export const router = createBrowserRouter([
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
         path: 'manageUsers',
         element: <ManageUsers></ManageUsers>
       },
+      // {
+      //   path: 'addClass',
+      //   element: <AddClass></AddClass>
+      // },
       {
         path: 'manageClass',
         element: <ManageClasses></ManageClasses>

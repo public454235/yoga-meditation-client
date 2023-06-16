@@ -1,4 +1,4 @@
-import { Link, } from "react-router-dom";
+import { Link, useNavigate, } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
@@ -7,9 +7,11 @@ import { FaEyeSlash, FaEye } from 'react-icons/fa';
 
 
 
+
 const Login = () => {
 
     const { signIn } = useContext(AuthContext)
+    const navigate = useNavigate()
 
 
     const handleLogin = event => {
@@ -23,6 +25,9 @@ const Login = () => {
                 const user = result.user
                 console.log(user)
 
+                
+
+
                 Swal.fire({
                     title: 'Custom animation with Animate.css',
                     showClass: {
@@ -32,6 +37,7 @@ const Login = () => {
                         popup: 'animate__animated animate__fadeOutUp'
                     }
                 })
+                navigate('/')
 
             })
     }
@@ -78,11 +84,11 @@ const Login = () => {
                                 {/* eye */}
 
                                 <div className="text-1xl absolute top-3 right-5">
-                                        {
-                                            (passwordEye === false) ? < FaEyeSlash onClick={handlePasswordClick}></FaEyeSlash> : <FaEye onClick={handlePasswordClick}></FaEye>
-                                        }
+                                    {
+                                        (passwordEye === false) ? < FaEyeSlash onClick={handlePasswordClick}></FaEyeSlash> : <FaEye onClick={handlePasswordClick}></FaEye>
+                                    }
 
-                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
