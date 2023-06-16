@@ -1,8 +1,9 @@
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import { AuthContext } from '../../../providers/AuthProvider';
-import { useContext } from 'react';
+
 
 
 const StudentClass = ({item}) => {
@@ -12,8 +13,8 @@ const StudentClass = ({item}) => {
     const navigate = useNavigate()
     const handleAddClass = item => {
         if (user && user?.email) {
-            const bookingClass = { classId: _id, name, image, email: user?.email, price }
-            fetch('http://localhost:5000/classes', {
+            const bookingClass = { classId:  name, image, email: user?.email, price }
+            fetch('https://meditation-server-assignment12.vercel.app/carts', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -24,7 +25,7 @@ const StudentClass = ({item}) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
-                        refetch()
+                       
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',

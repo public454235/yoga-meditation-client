@@ -4,6 +4,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
+import { saveUser } from "../../hooks/saveUser";
 
 
 
@@ -23,6 +24,7 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user
+                saveUser(result.user)
                 console.log(user)
 
                 

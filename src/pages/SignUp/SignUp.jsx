@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
+import { saveUser } from "../../hooks/saveUser";
 
 const SignUp = () => {
 
@@ -19,9 +20,11 @@ const SignUp = () => {
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
+                
                 console.log(loggedUser)
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
+                        saveUser(result.user)
                         reset();
                         Swal.fire({
                             position: 'top-end',

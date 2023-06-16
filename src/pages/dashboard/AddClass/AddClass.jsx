@@ -1,9 +1,8 @@
 
-import { useForm } from 'react-hook-form';
-import useAxiosSecure from '../../Hooks/useAxiosSecure/useAxiosSecure';
-import { Helmet } from 'react-helmet';
-import { AuthContext } from '../../../providers/AuthProvider';
+import { useForm } from "react-hook-form"
 import { useContext } from 'react';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const img_token = import.meta.env.VITE_IMGBB_KEY;
 
@@ -12,7 +11,7 @@ const AddClass = () => {
     const [axiosSecure] = useAxiosSecure()
     const { user } = useContext(AuthContext)
     const { register, handleSubmit, } = useForm();
-    const img_token_url = `http://localhost:5000=${img_token}`
+    const img_token_url = `https://meditation-server-assignment12.vercel.app=${img_token}`
     const onSubmit = data => {
         const formData = new FormData()
         formData.append('image', data.photoURL[0]
@@ -38,9 +37,6 @@ const AddClass = () => {
     };
     return (
         <div>
-            <Helmet>
-                <title>Yoga|| Add Class</title>
-            </Helmet>
             <div className='w-full p-10'>
                 <h1 className='text-4xl text-red-600 text-center mb-10 font-bold'>Add A Class</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>

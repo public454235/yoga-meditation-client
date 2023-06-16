@@ -1,4 +1,5 @@
 export const saveUser = user => {
+    console.log(user)
     const currentUser = {
         email: user.email,
         name: user.displayName,
@@ -6,7 +7,7 @@ export const saveUser = user => {
         role: user?.role ? user?.role : 'student'
 
     }
-    fetch(`http://localhost:5000/users/${user?.email}`, {
+    fetch(`https://meditation-server-assignment12.vercel.app/users/${user?.email}`, {
         method: "PUT",
         headers: {
             'content-type': 'application/json'
